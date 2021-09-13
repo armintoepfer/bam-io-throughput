@@ -42,3 +42,9 @@ Throughput measures in **GBases per minute**:
 |   64    | 24.8  |  76.8   |       16.0       |   56.3    |     12.8      |
 
 No significant improvements beyond 64 threads.
+
+Comparison NVMe Micron 9300 SSD vs spinning disk RAID 10 on 64 threads:
+| Threads |  CLR  | CCS+all | CCS+all+kinetics | HiFi only | HiFi+kinetics |
+| :-----: | :---: | :-----: | :--------------: | :-------: | :-----------: |
+|  NVMe   | 24.8  |  76.8   |       16.0       |   56.3    |     12.8      |
+|  HDDs   | 24.8  |  60.0   |       13.9       |   51.8    |     11.1      |
