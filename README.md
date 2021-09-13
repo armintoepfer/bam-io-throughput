@@ -3,7 +3,9 @@
 
 # What is this about?
 If you want measure the throughput of reading and writing BAM files, with
-optional multithreaded BAM compression and decompression.
+optional multithreaded BAM compression and decompression. `biot` reads in a
+BAM file and writes the identical file out. Except for the (de)compression,
+it's a serial workflow.
 
 # How to compile
 
@@ -12,6 +14,13 @@ optional multithreaded BAM compression and decompression.
     ninja
     ninja install
 
+# Precompiled binary
+You can find fully static binaries under releases. They are build with
+ * gcc 10.3
+ * glibc 2.33
+ * mimalloc 1.63
+ * zlib 1.2.11
+ * htslib 1.13
 # How to run
 
     biot movie.input.bam movie.output.bam --log-level INFO --compression-threads 8 --decompression-threads 8
@@ -44,7 +53,7 @@ Throughput measures in **GBases per minute**:
 No significant improvements beyond 64 threads.
 
 Comparison NVMe Micron 9300 SSD vs spinning disk RAID 10 on 64 threads:
-| Threads |  CLR  | CCS+all | CCS+all+kinetics | HiFi only | HiFi+kinetics |
-| :-----: | :---: | :-----: | :--------------: | :-------: | :-----------: |
-|  NVMe   | 24.8  |  76.8   |       16.0       |   56.3    |     12.8      |
-|  HDDs   | 24.8  |  60.0   |       13.9       |   51.8    |     11.1      |
+| Threads | CCS+all | CCS+all+kinetics | HiFi only | HiFi+kinetics |
+| :-----: | :-----: | :--------------: | :-------: | :-----------: |
+|  NVMe   |  76.8   |       16.0       |   56.3    |     12.8      |
+|  HDDs   |  60.0   |       13.9       |   51.8    |     11.1      |
