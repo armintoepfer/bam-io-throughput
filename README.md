@@ -24,3 +24,21 @@ optional multithreaded BAM compression and decompression.
     | 20210913 11:03:04.453 | INFO | Run Time   : 1s 542ms        <- Wall time
     | 20210913 11:03:04.453 | INFO | CPU Time   : 17s 191ms       <- Consumed CPU time
     | 20210913 11:03:04.453 | INFO | Peak RSS   : 0.037 GB        <- Maximum occupied RAM
+
+# Benchmarks
+
+Hardware: 2x AMD 7702, Micron 9300 SSD w/ 3.5 GByte/s seq read/write
+
+Throughput measures in **GBases per minute**:
+
+| Threads |  CLR  | CCS+all | CCS+all+kinetics | HiFi only |
+| :-----: | :---: | :-----: | :--------------: | :-------: |
+|    1    |  0.7  |   2.2   |       0.5        |    1.5    |
+|    2    |  1.8  |   5.4   |       1.1        |    3.9    |
+|    4    |  3.4  |  10.6   |       2.2        |    7.6    |
+|    8    |  6.4  |  19.8   |       4.2        |   14.3    |
+|   16    | 11.4  |  35.9   |       7.5        |   25.8    |
+|   32    | 19.0  |  58.8   |       12.4       |   41.5    |
+|   64    | 24.8  |  76.8   |       16.0       |   56.3    |
+
+No significant improvements beyond 64 threads.
